@@ -1,0 +1,11 @@
+---
+- name: Install rpcbind
+  apt:
+      name: rpcbind
+      state: present
+
+- name: Start service and enable on boot
+  service:
+      name: rpcbind
+      state: restarted
+      enabled: yes
