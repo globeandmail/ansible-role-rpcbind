@@ -9,3 +9,8 @@
       name: rpcbind
       state: restarted
       enabled: yes
+
+- name: Fix for ubuntu16 (otherwise rpcbind won't start at boot)
+  shell: /bin/systemctl add-wants multi-user.target rpcbind.service
+  args:
+    creates: /etc/systemd/system/multi-user.target.wants/rpcbind.service
